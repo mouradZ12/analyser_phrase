@@ -1,0 +1,34 @@
+program AnalyzeSentence;
+var
+  phrase: string;
+  length, wordCount, vowelCount, i: integer;
+  character: char;
+
+begin
+  length := 0;
+  wordCount := 0;
+  vowelCount := 0;
+
+  write('Entrez une phrase : ');
+  readln(phrase);
+
+  for i := 1 to Length(phrase) - 1 do
+  begin
+    character := phrase[i];
+    length := length + 1;
+
+    if character in ['a'..'z', 'A'..'Z'] then
+    begin
+      if character in ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'] then
+        vowelCount := vowelCount + 1;
+    end
+    else if character = ' ' then
+      wordCount := wordCount + 1;
+  end;
+
+  wordCount := wordCount + 1; // Prendre en compte le dernier mot
+
+  writeln('Longueur de la phrase : ', length);
+  writeln('Nombre de mots : ', wordCount);
+  writeln('Nombre de voyelles : ', vowelCount);
+end.
